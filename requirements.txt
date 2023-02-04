@@ -6,5 +6,4 @@ cffi
 click
 colorama
 passlib
-pycparser
 tqdm
