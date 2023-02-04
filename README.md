@@ -20,7 +20,7 @@ CRYPT is tool that allow you to encrypt or decrypt texts.
 + Salted MD5
 + SHA256 & SHA512
 + SHA256 & SHA512 Crypt
-+ Salted SAH256 & SHA512
++ Salted SHA256 & SHA512
 + NT
 + BCrypt
 + Argon2
