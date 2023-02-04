@@ -22,7 +22,6 @@ import os
 from pprint import pprint
 from modules import main, art, clear, functions
 from modules.crack import *
-from keyboard import wait
 import sys
 
 
@@ -64,7 +63,7 @@ if __name__ == "__main__":
                                 functions.enc_writer(text_input, "Base16", results)
 
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif b16_cmd.upper() == "D":
                             text_input = input(f"{cyn}        [+] Encoded Text: {wte}")
@@ -76,12 +75,12 @@ if __name__ == "__main__":
                                 functions.dec_writer(text_input, "Base16", results)
 
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif b16_cmd.upper() == "I":
                             print(main.info_b16)
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif b16_cmd.upper() == "B":
                             break
@@ -90,7 +89,7 @@ if __name__ == "__main__":
                         print(main.error_logo(red))
                         print(f"{red}\n\t[!!] Unexpected Error Happened!")
                         print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                        wait("enter")
+                        input()
 
             elif cmd_main == "2":  # Base32
                 while True:
@@ -109,7 +108,7 @@ if __name__ == "__main__":
                                 functions.enc_writer(text_input, "Base32", results)
 
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif b32_cmd.upper() == "D":
                             text_input = input(f"{cyn}        [+] Encoded Text: {wte}")
@@ -121,12 +120,12 @@ if __name__ == "__main__":
                                 functions.dec_writer(text_input, "Base32", results)
 
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif b32_cmd.upper() == "I":
                             print(main.info_b32)
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif b32_cmd.upper() == "B":
                             break
@@ -135,7 +134,7 @@ if __name__ == "__main__":
                         print(main.error_logo(red))
                         print(f"{red}\n\t[!!] Unexpected Error Happened!")
                         print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                        wait("enter")
+                        input()
 
             elif cmd_main == "3":  # Base64
                 while True:
@@ -154,7 +153,7 @@ if __name__ == "__main__":
                                 functions.enc_writer(b64_en, "Base64", results)
 
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif b64_command.upper() == "D":
                             b64_de = input(f"{cyn}        [+] Encoded Text: {wte}")
@@ -166,12 +165,12 @@ if __name__ == "__main__":
                                 functions.dec_writer(b64_de, "Base64", results)
 
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif b64_command.upper() == "I":
                             print(main.info_b64)
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif b64_command.upper() == "B":
                             break
@@ -180,7 +179,7 @@ if __name__ == "__main__":
                         print(main.error_logo(red))
                         print(f"{red}\n\t[!!] Unexpected Error Happened!")
                         print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                        wait("enter")
+                        input()
 
             elif cmd_main == "4":  # Caesar Cipher
                 while True:
@@ -209,7 +208,7 @@ if __name__ == "__main__":
                                 )
 
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif cc_command.upper() == "D":
                             text_input = input(
@@ -234,7 +233,7 @@ if __name__ == "__main__":
                                 )
 
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif cc_command.upper() == "F":
                             print(main.info_cc_bf)
@@ -255,12 +254,12 @@ if __name__ == "__main__":
                                     brute_path,
                                 )
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif cc_command.upper() == "I":
                             print(main.info_cc)
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif cc_command.upper() == "B":
                             break
@@ -269,7 +268,7 @@ if __name__ == "__main__":
                         print(main.error_logo(red))
                         print(f"{red}\n\t[!!] Unexpected Error Happened!")
                         print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                        wait("enter")
+                        input()
 
             elif cmd_main == "5":  # Morse Code
                 while True:
@@ -288,7 +287,7 @@ if __name__ == "__main__":
                                 functions.enc_writer(text_input, "Morse Code", results)
 
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif mc_command.upper() == "D":
                             text_input = input(
@@ -302,12 +301,12 @@ if __name__ == "__main__":
                                 functions.dec_writer(text_input, "Morse Code", results)
 
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif mc_command.upper() == "I":
                             print(main.info_mc)
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif mc_command.upper() == "B":
                             break
@@ -316,7 +315,7 @@ if __name__ == "__main__":
                         print(main.error_logo(red))
                         print(f"{red}\n\t[!!] Unexpected Error Happened!")
                         print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                        wait("enter")
+                        input()
 
             elif cmd_main == "6":  # Base85
                 while True:
@@ -335,7 +334,7 @@ if __name__ == "__main__":
                                 functions.enc_writer(text_input, "Base85", results)
 
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif b85_command.upper() == "D":
                             b85_de = input(f"{cyn}[+]        Encrypted Text: {wte}")
@@ -347,12 +346,12 @@ if __name__ == "__main__":
                                 functions.dec_writer(b85_de, "Base85", results)
 
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif b85_command.upper() == "I":
                             print(main.info_b85)
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif b85_command.upper() == "B":
                             break
@@ -361,7 +360,7 @@ if __name__ == "__main__":
                         print(main.error_logo(red))
                         print(f"{red}\n\t[!!] Unexpected Error Happened!")
                         print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                        wait("enter")
+                        input()
 
             elif cmd_main == "7":  # Baconian Cipher
                 while True:
@@ -382,7 +381,7 @@ if __name__ == "__main__":
                                 )
 
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif bacon_cmd.upper() == "D":
                             bacon_dec = input(f"{cyn}[+] Encrypted Text: {wte}")
@@ -396,12 +395,12 @@ if __name__ == "__main__":
                                 )
 
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif bacon_cmd.upper() == "I":
                             print(main.info_bc)
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif bacon_cmd == "B":
                             break
@@ -410,7 +409,7 @@ if __name__ == "__main__":
                         print(main.error_logo(red))
                         print(f"{red}\n\t[!!] Unexpected Error Happened!")
                         print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                        wait("enter")
+                        input()
 
             elif cmd_main == "8":  # MD5
                 while True:
@@ -430,7 +429,7 @@ if __name__ == "__main__":
                             )
 
                         print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                        wait("enter")
+                        input()
 
                     elif cmd_hash == "2":
                         crackHash_menu(write_to_file)
@@ -464,7 +463,7 @@ if __name__ == "__main__":
                                     is_hash=True,
                                 )
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif cmd_more == "2":  # Salted MD5
                             clear.cl_all_v2()
@@ -483,7 +482,7 @@ if __name__ == "__main__":
                                     is_hash=True,
                                 )
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif cmd_more == "3":  # SHA256
                             while True:
@@ -510,7 +509,7 @@ if __name__ == "__main__":
                                     print(
                                         f"{gry}\n\n\t[!] {wte}Press ENTER to continue..."
                                     )
-                                    wait("enter")
+                                    input()
 
                                 elif cmd_hash == "2":
                                     crackHash_menu(write_to_file)
@@ -535,7 +534,7 @@ if __name__ == "__main__":
                                     is_hash=True,
                                 )
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif cmd_more == "5":  # Salted SHA256
                             clear.cl_all_v2()
@@ -554,7 +553,7 @@ if __name__ == "__main__":
                                     is_hash=True,
                                 )
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif cmd_more == "6":  # SHA512
                             while True:
@@ -581,7 +580,7 @@ if __name__ == "__main__":
                                     print(
                                         f"{gry}\n\n\t[!] {wte}Press ENTER to continue..."
                                     )
-                                    wait("enter")
+                                    input()
 
                                 elif cmd_hash == "2":
                                     crackHash_menu(write_to_file)
@@ -606,7 +605,7 @@ if __name__ == "__main__":
                                     is_hash=True,
                                 )
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif cmd_more == "8":  # Salted SHA512
                             clear.cl_all_v2()
@@ -625,7 +624,7 @@ if __name__ == "__main__":
                                     is_hash=True,
                                 )
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif cmd_more == "9":  # NT Hash
                             clear.cl_all_v2()
@@ -640,7 +639,7 @@ if __name__ == "__main__":
                                     text_input, "NT Hash", results, path, is_hash=True
                                 )
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif cmd_more == "10":  # BCrypt
                             clear.cl_all_v2()
@@ -655,7 +654,7 @@ if __name__ == "__main__":
                                     text_input, "BCrypt", results, path, is_hash=True
                                 )
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif cmd_more == "11":  # Argon2
                             clear.cl_all_v2()
@@ -670,7 +669,7 @@ if __name__ == "__main__":
                                     text_input, "Argon2", results, path, is_hash=True
                                 )
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif cmd_more == "12":  # PBKDF2-SHA256
                             clear.cl_all_v2()
@@ -689,7 +688,7 @@ if __name__ == "__main__":
                                     is_hash=True,
                                 )
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif cmd_more == "13":  # PBKDF2-SHA512
                             clear.cl_all_v2()
@@ -708,7 +707,7 @@ if __name__ == "__main__":
                                     is_hash=True,
                                 )
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif cmd_more == "14":  # Hash Crackers
                             crackHash_menu(write_to_file)
@@ -720,7 +719,7 @@ if __name__ == "__main__":
                             clear.cl_all_v2()
                             art.about(ylo, wte, grn, cyn)
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            wait("enter")
+                            input()
 
                         elif cmd_more.upper() == "F":
                             file_write = input(
@@ -738,7 +737,7 @@ if __name__ == "__main__":
                 clear.cl_all_v2()
                 art.about(ylo, wte, grn, cyn)
                 print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                wait("enter")
+                input()
 
             elif cmd_main.upper() == "F":
                 file_write = input(

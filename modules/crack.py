@@ -25,7 +25,6 @@ from tqdm import tqdm
 import modules.clear as clear
 import time
 import modules.main as main
-from keyboard import wait
 from os import sep
 from modules.functions import md5, sha256, sha512
 
@@ -187,7 +186,7 @@ def crackHash_menu(file_write: bool):
                     is_hash=True,
                 )
             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-            wait("enter")
+            input()
 
         elif cmd_cracker == "2":  # Wordlist
             clear.cl_all_v2()
