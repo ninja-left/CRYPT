@@ -1,0 +1,11 @@
+argon2-cffi
+argon2-cffi-bindings
+bcrypt
+brute
+cffi
+click
+colorama
+keyboard
+passlib
+pycparser
+tqdm
