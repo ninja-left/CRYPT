@@ -270,7 +270,6 @@ def cc_encrypt(input_string: str, key: int, alphabet: str | None = None) -> str:
 
     for character in input_string:
         if character not in alpha:
-            # Append without encryption if character is not in the alphabet
             result += character
         else:
             # Get the index of the new key and make sure it isn't too large
@@ -295,7 +294,7 @@ def cc_decrypt(input_string: str, key: int, alphabet: str | None = None) -> str:
         letters is used
     """
 
-    # Turn on decode mode by making the key negative
+    # Making the key negative
     key *= -1
     return cc_encrypt(input_string, key, alphabet)
 
