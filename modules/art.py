@@ -1,4 +1,4 @@
-# -*- coding: UTf-8 -*-
+# -*- coding: UTF-8 -*-
 
 from colorama import Fore as f
 
