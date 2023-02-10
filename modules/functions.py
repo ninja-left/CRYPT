@@ -23,9 +23,10 @@ from os import sep
 from pathlib import Path
 import time
 import base64
-from string import ascii_letters
+from string import ascii_letters, ascii_uppercase
 import hashlib
 import passlib.hash as passlibHash
+import subprocess
 
 # Colors
 grn = "\x1b[0;32m"  # Green
@@ -446,6 +447,56 @@ def bacon_decode(coded: str) -> str:
             word = word[5:]
         decoded += " "
     return decoded.strip()
+
+
+# Vigenère Cipher
+def vig_cipher(text: str, key: str, mode: str = "encrypt" or "decrypt") -> str:
+    results = ""
+    keyIndex = 0
+    Letters = ascii_uppercase
+    good = True
+
+    if key.isalpha():
+        key = key.upper()
+    else:
+        results += "Key must be a word or any combination of letters."
+        good = False
+    if mode not in ["encrypt", "decrypt"]:
+        results += f"Invalid mode: {mode}. Must be 'encrypt' or 'decrypt'."
+        good = False
+
+    if good:
+        for char in text:
+            i = Letters.find(char.upper())
+            if i != -1:
+                if mode == "encrypt":
+                    i += Letters.find(key[keyIndex])
+                else:
+                    i -= Letters.find(key[keyIndex])
+                i %= len(Letters)
+
+                if char.isupper():
+                    results += Letters[i]
+                else:
+                    results += Letters[i].lower()
+                keyIndex += 1
+                if keyIndex == len(key):
+                    keyIndex = 0
+            else:
+                results += char
+        try:
+            subprocess.Popen(
+                ["/bin/sh", "-c", f'echo "{results}" | xsel --clipboard --input']
+            )
+        except:
+            pass
+
+        print(f"Copied: {results}")
+        input(f"Paste it here > ")
+    else:
+        results += "[OPERATION FAILED]"
+
+    return results
 
 
 # Hashes
