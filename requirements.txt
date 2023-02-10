@@ -7,3 +7,4 @@ click
 colorama
 passlib
 tqdm
+pyperclip
