@@ -289,6 +289,19 @@ def menu_more(c1: str, c2: str, c3: str):
     """
 
 
+def menu_crackers():
+    return f"""
+            Hash Crackers
+{ylo}        ╔════════════════════╗
+{ylo}        ║ {ppl}[1] {grn}Brute Force    {ylo}║
+{ylo}        ║ {ppl}[2] {grn}WordList       {ylo}║
+{ylo}        ╠════════════════════╣
+{ylo}        ║ {red}[B] Back           {ylo}║
+{ylo}        ╚════════════════════╝
+
+"""
+
+
 def error_logo(c1: str):
     """c1: Text color."""
     return f"""
