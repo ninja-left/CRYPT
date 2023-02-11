@@ -19,119 +19,62 @@
 """
 
 from __future__ import annotations
-from os import sep
+import os
+import sys
 from pathlib import Path
 import time
 import base64
 from string import ascii_letters, ascii_uppercase
 import hashlib
 import passlib.hash as passlibHash
-import subprocess
-
-# Colors
-grn = "\x1b[0;32m"  # Green
-red = "\x1b[0;31m"  # Red
-wte = "\x1b[0;37m"  # White
-ppl = "\x1b[0;35m"  # Purple (Magenta)
-ylo = "\x1b[0;36m"  # Yellow
-blu = "\x1b[0;36m"  # Blue
-cyn = "\x1b[0;36m"  # Cyan
-gry = "\x1b[0;90m"  # Grey (Light Black)
+from tqdm import tqdm
 
 
-enc_path = f".{sep}Results{sep}Encrypted.txt"
-dec_path = f".{sep}Results{sep}Decrypted.txt"
+def cl():
+    if sys.platform == "win32":
+        os.system("cls")
+    elif sys.platform == "linux":
+        os.system("clear")
 
 
-def enc_writer(
-    txt: str,
+default_path = f".{os.sep}Results{os.sep}Results.txt"
+
+
+def fileWriter(
+    txt: str | dict[str, str],
     cipher: str,
-    method: str | dict[int, str],
-    path: str = enc_path,
+    result: str | dict[str, str],
+    path: str = default_path,
     cc: bool = False,
-    cc_key: int | None = None,
-    is_hash: bool = False,
-):
-    """
-    Parameters:
-    ---
-        Required:
-        ---
-        - txt: The input text.
-        - cipher: The cipher name; 'Base64', 'Morse Code', and ... .
-        - method: The function that encrypts the text.
-        * Example: Base64 --> base64_encrypt(bytes(txt, "utf-8"))
-
-        Optional:
-        ---
-        - path: The path to write the file.
-        - cc: checks if it's Caesar Cipher; Default is False.
-        - cc_key: The key used to shift the text.
-        - is_hash: True if it's a hash; Default is False.
-    """
-    deco = "#" * 50
-    times = (
-        f"\n At {time.localtime().tm_hour}:{time.localtime().tm_min}:{time.localtime().tm_sec}"
-        f" {time.localtime().tm_mday}/{time.localtime().tm_mon}/{time.localtime().tm_year}"
-    )
-
-    enc_text = f"{deco}{times}\n\n Plain Text: {txt}\n\n Encrypted {cipher}: {method}\n\n{deco}\n"
-    if cc:
-        enc_text = f"{deco}{times}\n\n Plain Text: {txt}\n key: {cc_key}\n\n Encrypted {cipher}: {method}\n\n{deco}\n"
-    if is_hash:
-        enc_text = f"{deco}{times}\n\n Plain Text: {txt}\n\n {cipher} Hash: {method}\n\n{deco}\n"
-    path_dir = path.split(sep)
-    path_dir.pop(-1)
-    save_dir = Path(sep.join(path_dir))
-    if not save_dir.exists():
-        save_dir.mkdir(parents=True)
-    with open(path, "a+") as file:
-        file.write(enc_text)
-
-
-def dec_writer(
-    txt: str,
-    cipher: str,
-    method: str | dict[int, str],
-    path: str = dec_path,
-    cc: bool = False,
-    cc_key: int | None = None,
-    is_hash: bool = False,
+    cc_key: int | str = "Unknown",
 ):
     """
     Parameters:
     ---
     - txt: The input text.
     - cipher: The cipher name; 'Base64', 'Caesar Cipher', and ...
-    - method: The function that decrypts the text;
-    * Example: Base64 -> base64_decrypt(bytes(txt, "utf-8"))
+    - type: "encrypt" or "decrypt"; used for file naming.
+    - result: The function's result that encrypts/decrypts the text;
 
     Optional:
     - path: The path to write the file; If not set, default will be used.
     - cc: checks if it's Caesar Cipher; Default is False.
     - cc_key: The key used to shift the text.
+    - is_hash: Set to true if it's a hash; Default is False.
     """
-    deco = "#" * 50
-    times = (
-        f"\n At {time.localtime().tm_hour}:{time.localtime().tm_min}:{time.localtime().tm_sec}"
-        f" {time.localtime().tm_mday}/{time.localtime().tm_mon}/{time.localtime().tm_year}"
-    )
-
-    dec_text = f"{deco}{times}\n\n Encrypted {cipher}: {txt}\n\n Decrypted Text: {method}\n\n{deco}\n"
+    ruler = "#" * 50
+    template = f"{ruler}\n\n Plain Text: {txt}\n\n {cipher}: {result}\n\n{ruler}\n"
     if cc:
-        dec_text = f"{deco}{times}\n\n Encrypted {cipher}: {txt}\n Key: {cc_key}\n\n Decrypted Text: {method}\n\n{deco}\n"
-    if is_hash:
-        dec_text = f"{deco}{times}\n\n Hash: {txt}\n\n {cipher} Decrypted: {method}\n\n{deco}\n"
-    path_dir = path.split(sep)
-    path_dir = path_dir.pop(-1)
-    save_dir = Path(path_dir.join(sep))
+        template = f"{ruler}\n\n Plain text: {txt}\n key: {cc_key}\n\n {cipher}: {result}\n\n{ruler}\n"
+    path_dir = path.split(os.sep)
+    path_dir.pop(-1)
+    save_dir = Path(os.sep.join(path_dir))
     if not save_dir.exists():
         save_dir.mkdir(parents=True)
     with open(path, "a+") as file:
-        file.write(dec_text)
+        file.write(template)
 
 
-# Base16
 def base16_encode(txt: str) -> str:
     return base64.b16encode(txt.encode("utf-8")).decode("utf-8")
 
@@ -140,7 +83,6 @@ def base16_decode(b16encoded: str) -> str:
     return base64.b16decode(b16encoded.encode("utf-8")).decode("utf-8")
 
 
-# Base32
 def base32_encode(string: str) -> str:
     return base64.b32encode(string.encode("utf-8")).decode("utf-8")
 
@@ -149,7 +91,6 @@ def base32_decode(encoded_bytes: str) -> str:
     return base64.b32decode(encoded_bytes.encode("utf-8")).decode("utf-8")
 
 
-# Base85
 def base85_encode(string: str) -> str:
     return base64.b85encode(string.encode("utf-8")).decode("utf-8")
 
@@ -158,11 +99,10 @@ def base85_decode(a85encoded: str) -> str:
     return base64.b85decode(a85encoded.encode("utf-8")).decode("utf-8")
 
 
-# Base64
 B64_CHARSET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 
 
-def base64_encrypt(text: str) -> str:
+def base64_encode(text: str) -> str:
     """Encodes data according to RFC4648.
     The data is first transformed to binary and appended with binary digits so that its
     length becomes a multiple of 6, then each 6 binary digits will match a character in
@@ -202,7 +142,7 @@ def base64_encrypt(text: str) -> str:
     ).decode()
 
 
-def base64_decrypt(encoded_data: str) -> str:
+def base64_decode(encoded_data: str) -> str:
     """Decodes data according to RFC4648.
     This does the reverse operation of base64_encode.
     We first transform the encoded data back to a binary stream, take off the
@@ -249,7 +189,7 @@ def base64_decrypt(encoded_data: str) -> str:
 
 
 # Caesar Cipher
-def cc_encrypt(input_string: str, key: int, alphabet: str | None = None) -> str:
+def cc_cipher(input_string: str, key: int, alphabet: str | None = None) -> str:
     """
     Parameters:
     -----------
@@ -282,25 +222,7 @@ def cc_encrypt(input_string: str, key: int, alphabet: str | None = None) -> str:
     return result
 
 
-def cc_decrypt(input_string: str, key: int, alphabet: str | None = None) -> str:
-    """
-    Parameters:
-    -----------
-    *   input_string: the cipher-text that needs to be decoded
-    *   key: the number of letters to shift the message backwards by to decode
-
-    Optional:
-    *   alphabet (None): the alphabet used to decode the cipher, if not
-        specified, the standard english alphabet with upper and lowercase
-        letters is used
-    """
-
-    # Making the key negative
-    key *= -1
-    return cc_encrypt(input_string, key, alphabet)
-
-
-def cc_brute_force(input_string: str, alphabet: str | None = None) -> dict[int, str]:
+def cc_brute_force(input_string: str, alphabet: str | None = None) -> dict[str, str]:
     """
     Parameters:
     -----------
@@ -312,16 +234,17 @@ def cc_brute_force(input_string: str, alphabet: str | None = None) -> dict[int, 
         letters is used
     """
 
-    # Set default alphabet to lower and upper case english chars
     alpha = alphabet or ascii_letters
-
-    # To store data on all the combinations
-    brute_force_data = {}
-
-    # Cycle through each combination
+    brute_force_data = dict()
+    bar = tqdm(total=len(alpha) + 1, leave=False)
     for key in range(1, len(alpha) + 1):
-        # Decrypt the message and store the result in the data
-        brute_force_data[f"Key {key}"] = cc_decrypt(input_string, key, alpha)
+        key *= -1
+        keyMatch = cc_cipher(input_string, key, alpha)
+        bar.set_description_str(f"{abs(key)}={keyMatch}")
+        brute_force_data[f"Key {abs(key)}"] = keyMatch
+        time.sleep(0.05)
+        bar.update(1)
+    bar.close()
 
     return brute_force_data
 
@@ -454,47 +377,25 @@ def vig_cipher(text: str, key: str, mode: str = "encrypt" or "decrypt") -> str:
     results = ""
     keyIndex = 0
     Letters = ascii_uppercase
-    good = True
 
-    if key.isalpha():
-        key = key.upper()
-    else:
-        results += "Key must be a word or any combination of letters."
-        good = False
-    if mode not in ["encrypt", "decrypt"]:
-        results += f"Invalid mode: {mode}. Must be 'encrypt' or 'decrypt'."
-        good = False
-
-    if good:
-        for char in text:
-            i = Letters.find(char.upper())
-            if i != -1:
-                if mode == "encrypt":
-                    i += Letters.find(key[keyIndex])
-                else:
-                    i -= Letters.find(key[keyIndex])
-                i %= len(Letters)
-
-                if char.isupper():
-                    results += Letters[i]
-                else:
-                    results += Letters[i].lower()
-                keyIndex += 1
-                if keyIndex == len(key):
-                    keyIndex = 0
+    for char in text:
+        i = Letters.find(char.upper())
+        if i != -1:
+            if mode == "encrypt":
+                i += Letters.find(key[keyIndex])
             else:
-                results += char
-        try:
-            subprocess.Popen(
-                ["/bin/sh", "-c", f'echo "{results}" | xsel --clipboard --input']
-            )
-        except:
-            pass
+                i -= Letters.find(key[keyIndex])
+            i %= len(Letters)
 
-        print(f"Copied: {results}")
-        input(f"Paste it here > ")
-    else:
-        results += "[OPERATION FAILED]"
+            if char.isupper():
+                results += Letters[i]
+            else:
+                results += Letters[i].lower()
+            keyIndex += 1
+            if keyIndex == len(key):
+                keyIndex = 0
+        else:
+            results += char
 
     return results
 
