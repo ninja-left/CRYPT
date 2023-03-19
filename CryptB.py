@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 
 """
@@ -60,7 +61,7 @@ def changer(plain: str, method: str, key: int | None = None) -> str:
     elif method == "base32-e":
         text = functions.base32_encode(plain)
     elif method == "base64-e":
-        text = functions.base64_encrypt(plain)
+        text = functions.base64_encode(plain)
     elif method == "base85-e":
         text = functions.base85_encode(plain)
     elif method == "base16-d":
@@ -68,19 +69,13 @@ def changer(plain: str, method: str, key: int | None = None) -> str:
     elif method == "base32-d":
         text = functions.base32_decode(plain)
     elif method == "base64-d":
-        text = functions.base64_decrypt(plain)
+        text = functions.base64_decode(plain)
     elif method == "base85-d":
         text = functions.base85_decode(plain)
-    elif method == "caesar-cipher-e":
-        if isinstance(key, int):
-            text = functions.cc_encrypt(plain, key)
-        else:
-            text = "Invalid key"
-    elif method == "caesar-cipher-d":
-        if isinstance(key, int):
-            text = functions.cc_decrypt(plain, key)
-        else:
-            text = "Invalid key"
+    elif method == "caesar-cipher":
+        text = (
+            functions.cc_cipher(plain, key) if isinstance(key, int) else "Invalid key"
+        )
     elif method == "morse-code-e":
         text = functions.mc_encrypt(plain)
     elif method == "morse-code-d":
@@ -99,6 +94,7 @@ def changer(plain: str, method: str, key: int | None = None) -> str:
     "-F",
     "file",
     type=click.File(mode="r", encoding="UTF-8"),
+    prompt=True,
     help="File containing plain text for encryption.",
 )
 @click.option(
@@ -106,6 +102,7 @@ def changer(plain: str, method: str, key: int | None = None) -> str:
     "-O",
     "output",
     type=click.Path(exists=False),
+    prompt=True,
     help="Path/File to write the encrypted text to.",
 )
 @click.option(
@@ -134,8 +131,7 @@ def changer(plain: str, method: str, key: int | None = None) -> str:
             "base32-e",
             "base64-e",
             "base85-e",
-            "caesar-cipher-e",
-            "caesar-cipher-d",
+            "caesar-cipher",
             "morse-code-e",
             "morse-code-d",
             "baconian-e",
@@ -143,6 +139,7 @@ def changer(plain: str, method: str, key: int | None = None) -> str:
         ],
         case_sensitive=False,
     ),
+    prompt=True,
     help="Method to use for encryption.",
 )
 @click.option(
@@ -151,7 +148,7 @@ def changer(plain: str, method: str, key: int | None = None) -> str:
     "key",
     type=click.INT,
     default=0,
-    help="Caesar Cipher encryption/decryption key.",
+    help="Caesar Cipher encryption/decryption key. Positive integer for encryption, Negative integer for decryption.",
 )
 @click.option(
     "--about",
@@ -173,12 +170,11 @@ def main(file: TextIOWrapper, output, method: str, about: bool, key: int) -> Non
     LICENSE for details.
     """
         )
-        sys.exit(0)
     try:
         with open(output, "w") as output:
             for line in file:
                 line = line.strip()
-                if method in ["caesar-cipher-e", "caesar-cipher-d"]:
+                if method == "caesar-cipher":
                     text = changer(line, method, key=key)
                 else:
                     text = changer(line, method)
