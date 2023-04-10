@@ -29,5 +29,5 @@ CRYPT is a tool that allows you to encrypt or decrypt texts.
 
 ---
 
-### CryptB
+## CryptB
 This script takes a file as input and encodes/decodes it line by line and writes the lines to the output file.
