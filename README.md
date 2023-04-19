@@ -1,3 +1,12 @@
+<div align=center>
+  <a href="https://github.com/N1nj4R8/CRYPT/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/N1nj4R8/CRYPT">
+  </a>
+  <a>
+    <img src="https://img.shields.io/github/commit-activity/m/N1nj4R8/CRYPT?style=flat">
+  </a>
+</div>
+
 # CRYPT
 **Encryption/Decryption Tool**
 
