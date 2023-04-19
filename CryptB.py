@@ -21,7 +21,6 @@
 
 from io import TextIOWrapper
 from os import get_terminal_size as term_size
-import sys
 import click
 from modules import functions
 

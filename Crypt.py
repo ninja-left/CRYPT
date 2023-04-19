@@ -20,7 +20,7 @@
 """
 
 from pprint import pprint
-from modules import art, functions
+from modules import design, functions
 from modules.crack import *
 import sys
 
@@ -39,14 +39,14 @@ if __name__ == "__main__":
     while True:
         try:
             functions.cl()
-            print(art.Crypt_Logo(red, gry, grn))
-            print(art.menu(ylo, ppl, wte))
+            print(design.Crypt_Logo(red, gry, grn))
+            print(design.menu(ylo, ppl, wte))
 
             cmd_main = input(f"{grn}   CRYPT>{wte} ")
 
             if cmd_main == "1":  # Base16
                 functions.cl()
-                print(art.info_b16)
+                print(design.info_b16)
                 try:
                     b16_input = input(f"\n{grn}   [+] Data:{wte} ")
                     mode = input(f"{grn}   [+] (E)ncrypt or (D)ecrypt?{wte} ").upper()
@@ -72,7 +72,7 @@ if __name__ == "__main__":
 
             elif cmd_main == "2":  # Base32
                 functions.cl()
-                print(art.info_b32)
+                print(design.info_b32)
                 try:
                     b32_input = input(f"\n{grn}   [+] Data:{wte} ")
                     mode = input(f"{grn}   [+] (E)ncrypt or (D)ecrypt?{wte} ").upper()
@@ -98,7 +98,7 @@ if __name__ == "__main__":
 
             elif cmd_main == "3":  # Base64
                 functions.cl()
-                print(art.info_b64)
+                print(design.info_b64)
                 try:
                     b64_input = input(f"\n{grn}   [+] Data:{wte} ")
                     mode = input(f"{grn}   [+] (E)ncrypt or (D)ecrypt?{wte} ").upper()
@@ -125,7 +125,7 @@ if __name__ == "__main__":
             elif cmd_main == "4":  # Caesar Cipher
                 try:
                     functions.cl()
-                    print(art.info_cc)
+                    print(design.info_cc)
                     cc_input = input(f"\n{grn}   [+] Text: {wte}")
                     print(
                         f'{ylo}\n\n   [!] "Key" is the number of letters to shift the message by.'
@@ -169,7 +169,7 @@ if __name__ == "__main__":
 
             elif cmd_main == "5":  # Morse Code
                 functions.cl()
-                print(art.info_mc)
+                print(design.info_mc)
                 try:
                     mc_input = input(f"\n{grn}   [+] Data:{wte} ")
                     mode = input(f"{grn}   [+] (E)ncrypt or (D)ecrypt?{wte} ").upper()
@@ -195,7 +195,7 @@ if __name__ == "__main__":
 
             elif cmd_main == "6":  # Base85
                 functions.cl()
-                print(art.info_b85)
+                print(design.info_b85)
                 try:
                     b85_input = input(f"\n{grn}   [+] Data:{wte} ")
                     mode = input(f"{grn}   [+] (E)ncrypt or (D)ecrypt?{wte} ").upper()
@@ -221,7 +221,7 @@ if __name__ == "__main__":
 
             elif cmd_main == "7":  # Baconian Cipher
                 functions.cl()
-                print(art.info_bc)
+                print(design.info_bc)
                 try:
                     functions.cl()
                     bacon_txt = input(f"\n{grn}   [+] Data: {wte}")
@@ -263,8 +263,8 @@ if __name__ == "__main__":
                 while True:
                     try:
                         functions.cl()
-                        print(art.Crypt_Logo(red, gry, grn))
-                        print(art.menu_more(ylo, ppl, wte))
+                        print(design.Crypt_Logo(red, gry, grn))
+                        print(design.menu_more(ylo, ppl, wte))
 
                         cmd_more = input(f"{grn}   CRYPT> {wte}")
 
@@ -447,7 +447,7 @@ if __name__ == "__main__":
                         elif cmd_more == "14":  # Hash Crackers
                             while True:
                                 cl()
-                                print(art.menu_crackers())
+                                print(design.menu_crackers())
                                 cmd_cracker = input(f"{grn}   CRYPT>{wte} ")
                                 if cmd_cracker == "1":  # Brute Force
                                     cl()
@@ -601,7 +601,7 @@ if __name__ == "__main__":
 
                         elif cmd_more.upper() == "A":
                             functions.cl()
-                            print(art.about(ylo, wte, grn, cyn))
+                            print(design.about(ylo, wte, grn, cyn))
                             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
                             input()
 
@@ -619,7 +619,7 @@ if __name__ == "__main__":
 
             elif cmd_main.upper() == "A":
                 functions.cl()
-                print(art.about(ylo, wte, grn, cyn))
+                print(design.about(ylo, wte, grn, cyn))
                 print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
                 input()
 
@@ -642,7 +642,7 @@ if __name__ == "__main__":
             raise
 
         except:
-            print(art.error_logo(red))
+            print(design.error_logo(red))
             print(f"{red}\n\t[!!] Unexpected Error Occurred!")
             error_choice = input(f"\n{ylo} Show error message?[y/N]:{wte} ").lower()
             if error_choice == "y":
