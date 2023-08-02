@@ -1,6 +1,21 @@
 # Changelog
 
-## [1.1.0] - 2023-02-05
+## [1.1.1] - 2023-02-04
+
+## Changed
+- Changed menus to removed extra options.
+
+### Fix
+- Fix the code for menus and options.
+- Fix `Morse Code` functions.
+- Fix `Baconian cipher` info.
+
+### Removed
+- Remove `MD5 Salted`.
+- Remove `SHA256 Salted`.
+- Remove `SHA512 Salted`.
+
+## [1.1.0] - 2023-02-04
 
 ### Added
 - Add 3 logos for different terminal width and heights.
@@ -18,5 +33,5 @@
 
 _Initial release._
 
-[1.1.0]: https://github.com/ninja-left/CRYPT/releases/tag/v1.1.0
+[1.1.1]: https://github.com/ninja-left/CRYPT/releases/tag/v1.1.1
 [1.0.0]: https://github.com/ninja-left/CRYPT/releases/tag/v1.0.0
