@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 from colorama import Fore
+from os import get_terminal_size as terminalSize
 
 grn = Fore.GREEN
 red = Fore.RED
@@ -18,7 +19,11 @@ def Crypt_Logo(c1: str, c2: str, c3: str):
     * c2: Letters.
     * c3: "Y"-like key in the middle.
     """
-    return f"""
+    width = terminalSize().columns
+    height = terminalSize().lines
+    version = "v1.1.0"
+
+    full = f"""
    {c1}   ▄▄████████▄▄
    {c1} ▐███▀      ▀███▌
    {c1} ██▌          ▐██  {c2}   @@@@@@@   @@@@@@@   {c3}  @   @  {c2}  @@@@@@@    @@@@@@@
@@ -32,7 +37,54 @@ def Crypt_Logo(c1: str, c2: str, c3: str):
    {c1}████████▄▄████████ {c2}   ::: :::   ::   :::  {c3}  ;:::   {c2}   ::           ::
    {c1}██████████████████ {c2}   :: :: :    :   : :  {c3}  ;::;   {c2}   :            :
    {c1}▐████████████████▌
-   """
+                                                             {ppl+version}
+    """
+
+    smallH = f"""
+    {c2}  ██████╗██████╗ {c1}██╗   ██╗{c2}██████╗ ████████╗
+    {c2} ██╔════╝██╔══██╗{c1}╚██╗ ██╔╝{c2}██╔══██╗╚══██╔══╝
+    {c2} ██║     ██████╔╝{c1} ╚████╔╝ {c2}██████╔╝   ██║
+    {c2} ██║     ██╔══██╗{c1}  ╚██╔╝  {c2}██╔═══╝    ██║
+    {c2} ╚██████╗██║  ██║{c1}   ██║   {c2}██║        ██║
+    {c2}  ╚═════╝╚═╝  ╚═╝{c1}   ╚═╝   {c2}╚═╝        ╚═╝
+                                       {ppl+version}
+    """
+
+    smallW = f"""
+           {c1}   ▄▄████████▄▄
+           {c1} ▐███▀      ▀███▌
+           {c1} ██▌          ▐██ 
+           {c1}▐██            ██▌
+           {c1}▐█▌            ▐█▌
+           {c1}▐█▌            ▐█▌
+           {c1}██████████████████
+           {c1}████████▀▀████████
+           {c1}███████▌  ▐███████
+           {c1}████████  ████████
+           {c1}████████▄▄████████
+           {c1}██████████████████
+           {c1}▐████████████████▌
+               {ppl+version}
+    """
+
+    minimal = f"""
+        {c1}     █████╗
+        {c1}    █╔════█╗
+        {c1}    █║    █║
+        {c1}   █████████╗
+        {c1}   ████ ████║
+        {c1}   █████████║
+        {c1}   ╚════════╝
+           {ppl+version}
+    """
+    if width >= 74 and height >= 34:
+        return full
+    elif width < 74 or height >= 34:
+        return smallW
+    elif width >= 47 or height >= 27:
+        return smallH
+    else:
+        return minimal
 
 
 def about(c1: str, c2: str, c3: str, c4: str):

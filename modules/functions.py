@@ -21,23 +21,26 @@
 from __future__ import annotations
 import os
 import sys
-from pathlib import Path
 import time
 import base64
-from string import ascii_letters, ascii_uppercase
 import hashlib
+from re import search
+from pathlib import Path
 import passlib.hash as passlibHash
+from string import ascii_letters, ascii_uppercase
 from tqdm import tqdm
+
+from colorama import Fore
+
+grn = Fore.GREEN
+wte = Fore.WHITE
+ylo = Fore.YELLOW
+
+default_path = f".{os.sep}Results{os.sep}Results.txt"
 
 
 def cl():
-    if sys.platform == "win32":
-        os.system("cls")
-    elif sys.platform == "linux":
-        os.system("clear")
-
-
-default_path = f".{os.sep}Results{os.sep}Results.txt"
+    os.system("cls" if sys.platform == "win32" else "clear")
 
 
 def fileWriter(
@@ -356,18 +359,31 @@ def bacon_encode(word: str) -> str:
         if letter.isalpha() or letter == " ":
             encoded += encode_dict[letter]
         else:
-            raise Exception("encode() accepts only letters of the alphabet and spaces")
+            encoded += letter
     return encoded
 
 
 def bacon_decode(coded: str) -> str:
-    if set(coded) - {"A", "B", " "} != set():
-        raise Exception("decode() accepts only 'A', 'B' and spaces")
     decoded = ""
+    pattern = r"[\d\._\-&!@?]+"
     for word in coded.split():
+        print(coded.split())
+        print(word)
+        input("> ")
         while len(word) != 0:
-            decoded += decode_dict[word[:5]]
-            word = word[5:]
+            if word[:5].isalpha():
+                print(f"is letter: {word[:5]}")
+                decoded += decode_dict[word[:5]]
+                word = word[5:]
+            else:
+                s = search(pattern, word)
+                if s:
+                    print(f"is not letter: {s.group()}")
+                    input("> ")
+                    decoded += word[s.start() : s.end()]
+                    word = word.replace(word[s.start() : s.end()], "")
+                else:
+                    raise BadCharacter(f"Bad characters in {word}; Bad:{s.group()}")
         decoded += " "
     return decoded.strip()
 
@@ -455,3 +471,24 @@ def pbkdf2_256(text: str) -> str:
 
 def pbkdf2_512(text: str) -> str:
     return passlibHash.pbkdf2_sha512.hash(text)
+
+
+def get_input() -> str:
+    lines = []
+    print(
+        f"{ylo}  [!] To stop taking inputs, use 'CTRL+D' (linux) or 'CTRL+Z+Enter' (windows)."
+    )
+    print(f"\n{grn}   [+] Data:{wte} ", end="")
+
+    while True:
+        try:
+            text = input()
+            if text:
+                lines.append(text)
+
+        except EOFError:
+            if len(lines) >= 1:
+                return "\n".join(lines)
+
+        except:
+            raise
