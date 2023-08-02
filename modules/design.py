@@ -1,4 +1,21 @@
 # -*- coding: UTF-8 -*-
+"""
+    CRYPT, Encryption/Decryption Tool
+    Copyright (C) 2022  N1nj4 R8
+
+    CRYPT is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    any later version.
+
+    CRYPT is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with CRYPT.  If not, see <https://www.gnu.org/licenses/>.
+"""
 
 from colorama import Fore
 from os import get_terminal_size as terminalSize
@@ -289,21 +306,22 @@ def menu(c1: str, c2: str, c3: str):
     c3: Menus' text.
     """
     return f"""
-{c1}        ╔══════════════════════╗
-{c1}        ║ {c2}[1] {c3}Base16           {c1}║
-{c1}        ║ {c2}[2] {c3}Base32           {c1}║
-{c1}        ║ {c2}[3] {c3}Base64           {c1}║
-{c1}        ║ {c2}[4] {c3}Caesar Cipher    {c1}║
-{c1}        ║ {c2}[5] {c3}Morse Code       {c1}║
-{c1}        ║ {c2}[6] {c3}Base85           {c1}║
-{c1}        ║ {c2}[7] {c3}Baconian Cipher  {c1}║
-{c1}        ║ {c2}[8] {c3}MD5              {c1}║
-{c1}        ║ {c2}[9] {c3}More             {c1}║
-{c1}        ╠══════════════════════╣
-{c1}        ║ {cyn}[A] About            {c1}║
-{c1}        ║ {ylo}[F] Log results      {c1}║
-{c1}        ║ {red}[E] Exit             {c1}║
-{c1}        ╚══════════════════════╝
+{c1}        ╔═══════════════════════╗
+{c1}        ║ {c2}[01] {c3}Base16           {c1}║
+{c1}        ║ {c2}[02] {c3}Base32           {c1}║
+{c1}        ║ {c2}[03] {c3}Base64           {c1}║
+{c1}        ║ {c2}[04] {c3}Caesar Cipher    {c1}║
+{c1}        ║ {c2}[05] {c3}Morse Code       {c1}║
+{c1}        ║ {c2}[06] {c3}Base85           {c1}║
+{c1}        ║ {c2}[07] {c3}Baconian Cipher  {c1}║
+{c1}        ║ {c2}[08] {c3}Vigenère Cipher  {c1}║
+{c1}        ║ {c2}[09] {c3}MD5              {c1}║
+{c1}        ║ {c2}[10] {c3}More             {c1}║
+{c1}        ╠═══════════════════════╣
+{c1}        ║ {cyn}[A] About             {c1}║
+{c1}        ║ {ylo}[F] Log results       {c1}║
+{c1}        ║ {red}[E] Exit              {c1}║
+{c1}        ╚═══════════════════════╝
 
     """
 
@@ -318,20 +336,16 @@ def menu_more(c1: str, c2: str, c3: str):
     return f"""
 {c1}        ╔══════════════════════╗
 {c1}        ║ {c2}[01] {c3}MD5 Crypt       {c1}║
-{c1}        ║ {c2}[02] {c3}Salted MD5      {c1}║
-{c1}        ║ {c2}[03] {c3}SHA256          {c1}║
-{c1}        ║ {c2}[04] {c3}SHA256 Crypt    {c1}║
-{c1}        ║ {c2}[05] {c3}Salted SHA256   {c1}║
-{c1}        ║ {c2}[06] {c3}SHA512          {c1}║
-{c1}        ║ {c2}[07] {c3}SHA512 Crypt    {c1}║
-{c1}        ║ {c2}[08] {c3}Salted SHA512   {c1}║
-{c1}        ║ {c2}[09] {c3}NT Hash         {c1}║
-{c1}        ║ {c2}[10] {c3}BCrypt          {c1}║
-{c1}        ║ {c2}[11] {c3}Argon2          {c1}║
-{c1}        ║ {c2}[12] {c3}PBKDF2+SHA256   {c1}║
-{c1}        ║ {c2}[13] {c3}PBKDF2+SHA512   {c1}║
-{c1}        ║ {c2}[14] {c3}Hash Crackers   {c1}║
-{c1}        ║ {c2}[15] {c3}Vigenère Cipher {c1}║
+{c1}        ║ {c2}[02] {c3}SHA256          {c1}║
+{c1}        ║ {c2}[03] {c3}SHA256 Crypt    {c1}║
+{c1}        ║ {c2}[04] {c3}SHA512          {c1}║
+{c1}        ║ {c2}[05] {c3}SHA512 Crypt    {c1}║
+{c1}        ║ {c2}[06] {c3}NT Hash         {c1}║
+{c1}        ║ {c2}[07] {c3}BCrypt          {c1}║
+{c1}        ║ {c2}[08] {c3}Argon2          {c1}║
+{c1}        ║ {c2}[09] {c3}PBKDF2+SHA256   {c1}║
+{c1}        ║ {c2}[10] {c3}PBKDF2+SHA512   {c1}║
+{c1}        ║ {c2}[11] {c3}Hash Crackers   {c1}║
 {c1}        ╠══════════════════════╣
 {c1}        ║ {cyn}[A] About            {c1}║
 {c1}        ║ {ylo}[F] Log results      {c1}║

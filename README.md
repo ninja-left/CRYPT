@@ -29,17 +29,22 @@ CRYPT is a tool that allows you to encrypt or decrypt texts.
 ## Hashes:
 + MD5
 + Md5 Crypt
-+ Salted MD5
 + SHA256 & SHA512
 + SHA256 & SHA512 Crypt
-+ Salted SHA256 & SHA512
 + NT
 + BCrypt
 + Argon2
 + PBKDF2+SHA256 & PBKDF2+SHA512
 + Hash Cracking with a wordlist or by Bruteforcing
 
----
+## License
+This project is licensed under [GPL v3.0]
+
+## TODO
+- [ ] Add new UI.
 
 ## CryptB
 This script takes a file as input and encodes/decodes it line by line and writes the lines to the output file.
+
+
+[GPL v3.0]: ./LICENSE

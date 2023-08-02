@@ -308,16 +308,30 @@ MORSE_CODE_DICT = {
     ")": "-.--.-",
     "!": "-.-.--",
     " ": "/",
+    "\n": "[NL]",
 }  # Exclamation mark is not in ITU-R recommendation
-REVERSE_DICT = {value: key for key, value in MORSE_CODE_DICT.items()}
+MORSE_REVERSE_DICT = {value: key for key, value in MORSE_CODE_DICT.items()}
 
 
 def mc_encrypt(message: str) -> str:
-    return " ".join(MORSE_CODE_DICT[char] for char in message.upper())
+    encoded = ""
+    for char in message.upper():
+        if char in MORSE_CODE_DICT.keys():
+            encoded += MORSE_CODE_DICT[char] + " "
+        else:
+            encoded += char + " "
+    return encoded
 
 
 def mc_decrypt(message: str) -> str:
-    return "".join(REVERSE_DICT[char] for char in message.split())
+    decoded = ""
+    for char in message.split():
+        if char in MORSE_REVERSE_DICT.keys():
+            decoded += MORSE_REVERSE_DICT[char]
+        else:
+            decoded += char
+
+    return decoded.capitalize()
 
 
 # Baconian Cipher
@@ -367,25 +381,19 @@ def bacon_decode(coded: str) -> str:
     decoded = ""
     pattern = r"[\d\._\-&!@?]+"
     for word in coded.split():
-        print(coded.split())
-        print(word)
-        input("> ")
         while len(word) != 0:
             if word[:5].isalpha():
-                print(f"is letter: {word[:5]}")
                 decoded += decode_dict[word[:5]]
                 word = word[5:]
             else:
                 s = search(pattern, word)
                 if s:
-                    print(f"is not letter: {s.group()}")
-                    input("> ")
                     decoded += word[s.start() : s.end()]
                     word = word.replace(word[s.start() : s.end()], "")
                 else:
                     raise BadCharacter(f"Bad characters in {word}; Bad:{s.group()}")
         decoded += " "
-    return decoded.strip()
+    return decoded.strip().capitalize()
 
 
 # Vigenère Cipher
@@ -425,10 +433,6 @@ def md5_crypt(text: str) -> str:
     return passlibHash.md5_crypt.hash(text)
 
 
-def md5_salted(text: str) -> str:
-    return passlibHash.ldap_salted_md5.hash(text)
-
-
 def sha256(text: str) -> str:
     return hashlib.sha256(text.encode()).hexdigest()
 
@@ -437,20 +441,12 @@ def sha256_crypt(text: str) -> str:
     return passlibHash.sha256_crypt.hash(text)
 
 
-def sha256_salted(text: str) -> str:
-    return passlibHash.ldap_salted_sha256.hash(text)
-
-
 def sha512(text: str) -> str:
     return hashlib.sha512(text.encode()).hexdigest()
 
 
 def sha512_crypt(text: str) -> str:
     return passlibHash.sha512_crypt.hash(text)
-
-
-def sha512_salted(text: str) -> str:
-    return passlibHash.ldap_salted_sha512.hash(text)
 
 
 def bcrypt(text: str) -> str:

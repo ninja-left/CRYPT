@@ -25,7 +25,6 @@ from modules.crack import *
 import sys
 
 
-# Colors
 grn = "\x1b[0;32m"  # Green
 red = "\x1b[0;31m"  # Red
 wte = "\x1b[0;37m"  # White
@@ -33,8 +32,8 @@ ppl = "\x1b[0;35m"  # Purple (Magenta)
 ylo = "\x1b[0;33m"  # Yellow
 cyn = "\x1b[0;36m"  # Cyan
 gry = "\x1b[0;90m"  # Grey (Light Black)
-
 write_to_file = False
+
 while True:
     try:
         functions.cl()
@@ -142,9 +141,11 @@ while True:
 
                 print(f"\n\n{cyn}   [+] {mode}ed:{wte}")
                 if mode == "Brute-Forc":
+                    print(f"{cyn}<<<{wte}")
                     pprint(results, sort_dicts=False)
+                    print(f"{cyn}>>>")
                 else:
-                    print(results)
+                    print(f"{cyn}<<<{wte}{results}{cyn}>>>")
 
                 if mode == "Encrypt" and write_to_file:
                     functions.fileWriter(
@@ -220,7 +221,6 @@ while True:
             functions.cl()
             print(design.info_bc)
             try:
-                functions.cl()
                 bacon_txt = functions.get_input()
                 mode = input(f"{grn}   [+] (E)ncrypt or (D)ecrypt?{wte} ").upper()
                 if mode[0] == "E":
@@ -243,7 +243,47 @@ while True:
             except:
                 raise
 
-        elif cmd_main == "8":  # MD5
+        elif cmd_main == "8":  # Vigenère Cipher
+            functions.cl()
+            try:
+                vig_input = get_functions.get_input()
+                mode = input(f"{grn}   [+] (E)ncrypt or (D)ecrypt?{wte} ").upper()
+                if mode not in ["E", "D"]:
+                    raise Exception(f"Bad mode: {mode}; Mode must be 'E' or 'D'.")
+                mode = "Encrypt" if mode[0] == "E" else "Decrypt"
+                print(f"{cyn} [!] Key must be a word or any combination of letters.")
+                key = input(f"{grn}   [+] Key to use:{wte} ")
+                if key.isalpha():
+                    key = key.upper()
+                else:
+                    raise Exception("Key must be a word or any combination of letters.")
+                results = functions.vig_cipher(vig_input, key, mode.lower())
+                if write_to_file:
+                    if mode == "Encrypt":
+                        functions.fileWriter(
+                            vig_input,
+                            "Vigenère Cipher",
+                            results,
+                            cc=True,
+                            cc_key=key,
+                        )
+                    else:
+                        functions.fileWriter(
+                            results,
+                            "Vigenère Cipher",
+                            vig_input,
+                            cc=True,
+                            cc_key=key,
+                        )
+
+                print(f"{cyn}   [+] {mode}ed:\n<<<\n{wte}{results}\n{cyn}>>>")
+                print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
+                input()
+
+            except:
+                raise
+
+        elif cmd_main == "9":  # MD5
             functions.cl()
             text_input = functions.get_input()
 
@@ -256,7 +296,7 @@ while True:
             print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
             input()
 
-        elif cmd_main == "9":  # More
+        elif cmd_main == "10":  # More
             while True:
                 try:
                     functions.cl()
@@ -277,19 +317,7 @@ while True:
                         print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
                         input()
 
-                    elif cmd_more == "2":  # Salted MD5
-                        functions.cl()
-                        text_input = functions.get_input()
-
-                        results = functions.md5_salted(text_input)
-
-                        print(f"{cyn}   [+] Hash:\n<<<\n{wte}{results}\n{cyn}>>>")
-                        if write_to_file:
-                            functions.fileWriter(text_input, "MD5 Salted Hash", results)
-                        print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                        input()
-
-                    elif cmd_more == "3":  # SHA256
+                    elif cmd_more == "2":  # SHA256
                         functions.cl()
                         text_input = functions.get_input()
 
@@ -302,7 +330,7 @@ while True:
                         print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
                         input()
 
-                    elif cmd_more == "4":  # SHA256 Crypt
+                    elif cmd_more == "3":  # SHA256 Crypt
                         functions.cl()
                         text_input = functions.get_input()
 
@@ -314,23 +342,7 @@ while True:
                         print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
                         input()
 
-                    elif cmd_more == "5":  # Salted SHA256
-                        functions.cl()
-                        text_input = functions.get_input()
-
-                        results = functions.sha256_salted(text_input)
-
-                        print(f"{cyn}   [+] Hash:\n<<<\n{wte}{results}\n{cyn}>>>")
-                        if write_to_file:
-                            functions.fileWriter(
-                                text_input,
-                                "SHA256 Salted Hash",
-                                results,
-                            )
-                        print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                        input()
-
-                    elif cmd_more == "6":  # SHA512
+                    elif cmd_more == "4":  # SHA512
                         functions.cl()
                         text_input = functions.get_input()
 
@@ -343,7 +355,7 @@ while True:
                         print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
                         input()
 
-                    elif cmd_more == "7":  # SHA512 Crypt
+                    elif cmd_more == "5":  # SHA512 Crypt
                         functions.cl()
                         text_input = functions.get_input()
 
@@ -355,23 +367,7 @@ while True:
                         print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
                         input()
 
-                    elif cmd_more == "8":  # Salted SHA512
-                        functions.cl()
-                        text_input = functions.get_input()
-
-                        results = functions.sha512_salted(text_input)
-
-                        print(f"{cyn}   [+] Hash:\n<<<\n{wte}{results}\n{cyn}>>>")
-                        if write_to_file:
-                            functions.fileWriter(
-                                text_input,
-                                "SHA512 Salted Hash",
-                                results,
-                            )
-                        print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                        input()
-
-                    elif cmd_more == "9":  # NT Hash
+                    elif cmd_more == "6":  # NT Hash
                         functions.cl()
                         text_input = functions.get_input()
 
@@ -383,7 +379,7 @@ while True:
                         print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
                         input()
 
-                    elif cmd_more == "10":  # BCrypt
+                    elif cmd_more == "7":  # BCrypt
                         functions.cl()
                         text_input = functions.get_input()
 
@@ -395,7 +391,7 @@ while True:
                         print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
                         input()
 
-                    elif cmd_more == "11":  # Argon2
+                    elif cmd_more == "8":  # Argon2
                         functions.cl()
                         text_input = functions.get_input()
 
@@ -407,7 +403,7 @@ while True:
                         print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
                         input()
 
-                    elif cmd_more == "12":  # PBKDF2-SHA256
+                    elif cmd_more == "9":  # PBKDF2-SHA256
                         functions.cl()
                         text_input = functions.get_input()
 
@@ -419,7 +415,7 @@ while True:
                         print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
                         input()
 
-                    elif cmd_more == "13":  # PBKDF2-SHA512
+                    elif cmd_more == "10":  # PBKDF2-SHA512
                         functions.cl()
                         text_input = functions.get_input()
 
@@ -431,7 +427,7 @@ while True:
                         print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
                         input()
 
-                    elif cmd_more == "14":  # Hash Crackers
+                    elif cmd_more == "11":  # Hash Crackers
                         while True:
                             cl()
                             print(design.menu_crackers())
@@ -528,56 +524,6 @@ while True:
 
                             elif cmd_cracker.upper() == "B":
                                 break
-
-                    elif cmd_more == "15":  # Vigenère Cipher
-                        functions.cl()
-                        try:
-                            vig_input = get_functions.get_input()
-                            mode = input(
-                                f"{grn}   [+] (E)ncrypt or (D)ecrypt?{wte} "
-                            ).upper()
-                            if mode not in ["E", "D"]:
-                                raise Exception(
-                                    f"Bad mode: {mode}; Mode must be 'E' or 'D'."
-                                )
-                            mode = "Encrypt" if mode[0] == "E" else "Decrypt"
-                            print(
-                                f"{cyn} [!] Key must be a word or any combination of letters."
-                            )
-                            key = input(f"{grn}   [+] Key to use:{wte} ")
-                            if key.isalpha():
-                                key = key.upper()
-                            else:
-                                raise Exception(
-                                    "Key must be a word or any combination of letters."
-                                )
-                            results = functions.vig_cipher(vig_input, key, mode.lower())
-                            if write_to_file:
-                                if mode == "Encrypt":
-                                    functions.fileWriter(
-                                        vig_input,
-                                        "Vigenère Cipher",
-                                        results,
-                                        cc=True,
-                                        cc_key=key,
-                                    )
-                                else:
-                                    functions.fileWriter(
-                                        results,
-                                        "Vigenère Cipher",
-                                        vig_input,
-                                        cc=True,
-                                        cc_key=key,
-                                    )
-
-                            print(
-                                f"{cyn}   [+] {mode}ed:\n<<<\n{wte}{results}\n{cyn}>>>"
-                            )
-                            print(f"{gry}\n\n\t[!] {wte}Press ENTER to continue...")
-                            input()
-
-                        except:
-                            raise
 
                     elif cmd_more.upper() == "B":
                         break
