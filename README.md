@@ -22,6 +22,7 @@ CRYPT is a tool that allows you to encrypt or decrypt texts.
 * Caesar Cipher
 * Morse Code
 * Baconian Cipher
+* Vigenère Cipher
 
 ## Hashes:
 + MD5
