@@ -2,7 +2,7 @@
 
 ## [1.1.1] - 2023-02-04
 
-## Changed
+### Changed
 - Changed menus to removed extra options.
 
 ### Fix
