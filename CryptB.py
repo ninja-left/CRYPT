@@ -3,7 +3,7 @@
 
 """
     CRYPT Bulk, Bulk Encryption/Decryption Tool
-    Copyright (C) 2022  N1nj4 R8
+    Copyright (C) 2022  Ninja Left
 
     CRYPT Bulk is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
