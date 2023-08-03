@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap');
+
+:root {
+    /* Colors: */
+    --onyx: #0f0f0f;
+    --old-lace: #fdf5e6;
+    --dark-grey: #353535;
+    --persian-red: #cc3333;
+    --eggplant: #663366;
+    --grey-blue: #405161;
+    --debian-red: #d70a53;
+}
+
+body {
+    /* background-image: url("./bg.jpg"); */
+    background-color: var(--onyx);
+    color: var(--old-lace);
+    font-size: large;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.main {
+    text-align: justify;
+    padding-left: 17px;
+    background-color: var(--onyx);
+    border: 2px solid var(--dark-grey);
+    border-radius: 17px;
+    margin-bottom: 7%;
+}
+
+.li-main {
+    list-style: decimal inside;
+    color: var(--persian-red);
+}
+
+.li-sub {
+    list-style: circle inside;
+    color: var(--eggplant);
+}
+
+code,
+.code {
+    background-color: var(--dark-grey);
+    border-radius: 23px;
+    font-family: 'Fira Code', monospace;
+    padding: 7px;
+    margin: 13px auto;
+}
+
+.copy {
+    width: 27px;
+    border-radius: 15px;
+}
+
+.copy:hover {
+    background-color: var(--grey-blue);
+    transition: background-color 200ms ease-out;
+    cursor: copy;
+}
+
+p {
+    line-height: 37px;
+}
+
+hr {
+    width: 98%;
+    margin: 25px 0px 25px 0px;
+    height: 4px;
+    border: 0;
+    background-color: var(--dark-grey);
+}
+
+h1,
+h2 {
+    text-align: start;
+    color: var(--debian-red);
+    margin-left: 34%;
+    margin-top: 7%;
+}
+
+h2 {
+    margin-left: 10%;
+    color: var(--grey-blue);
+}
+
+@media screen and (max-width: 640px) {
+    body {
+        font-size: medium;
+    }
+
+    h1 {
+        margin-left: 14%;
+    }
+
+    h2 {
+        margin-left: 3%;
+    }
+}

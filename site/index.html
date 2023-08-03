@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./assets/style.css">
+        <link rel="shortcut icon" href="./assets/favicon.png" type="image/png">
+        <title>CRYPT</title>
+    </head>
+
+    <body>
+        <h1>CRYPT</h1>
+        <p align="center">a Cryptography tool</p>
+        <div class="main">
+            <br>
+            <div align="center">
+                <img src="https://img.shields.io/github/license/ninja-left/CRYPT">
+                <img src="https://img.shields.io/github/commit-activity/m/ninja-left/CRYPT"> <br>
+                <img src="https://img.shields.io/github/v/tag/ninja-left/CRYPT?label=Version&color=black">
+                <img src="https://img.shields.io/badge/code%20style-black-000000.svg">
+            </div>
+            <h2>What?</h2>
+            <p>
+                CRYPT is a tool that allows you to encrypt or decrypt texts.
+            </p>
+
+            <h2>Why?</h2>
+            <p>
+                The main reason I wrote this program was having access to common encodings and hash
+                functions in one place. Later I added more functions and ciphers. All releases have
+                a script named CryptB.py which takes 2 files as input and output and encodes or
+                decodes the input file line by line while writing to output file.
+            </p>
+            <h2> What encodings, ciphers, and hashes are supported?</h2>
+            <div>
+                <ol>
+                    <li class="li-main">Encodings:</li>
+                    <ul>
+                        <li class="li-sub"> Base16</li>
+                        <li class="li-sub">Base32</li>
+                        <li class="li-sub">Base64</li>
+                        <li class="li-sub">Base85</li>
+                    </ul>
+                    <li class="li-main">Ciphers:</li>
+                    <ul>
+                        <li class="li-sub">Caesar Cipher</li>
+                        <li class="li-sub">Morse Code</li>
+                        <li class="li-sub">Baconian Cipher</li>
+                        <li class="li-sub">Vigenère Cipher</li>
+                    </ul>
+                    <li class="li-main">Hashes:</li>
+                    <ul>
+                        <li class="li-sub">MD5</li>
+                        <li class="li-sub">Md5 Crypt</li>
+                        <li class="li-sub">SHA256 & SHA512</li>
+                        <li class="li-sub">SHA256 & SHA512 Crypt</li>
+                        <li class="li-sub">NT</li>
+                        <li class="li-sub">BCrypt</li>
+                        <li class="li-sub">Argon2</li>
+                        <li class="li-sub">PBKDF2+SHA256 & PBKDF2+SHA512</li>
+                        <li class="li-sub">Hash Cracking with a wordlist or by Bruteforcing</li>
+                    </ul>
+                </ol>
+            </div>
+
+            <h2>Usage</h2>
+            <p>
+                Run main app using <br>
+                <code>
+                    <span id="c1">python Crypt-?.?.?.py</span>
+                    &nbsp;&nbsp; <img onclick="copy('c1')" class="copy" src="./assets/copy.png">
+                </code> <br>
+                or <br>
+                <code>
+                    <span id="c2">./Crypt-?.?.?.py</span>
+                    &nbsp;&nbsp; <img onclick="copy('c2')" class="copy" src="./assets/copy.png">
+                </code> <br>
+                Where '?.?.?' is the current version.
+
+                <hr>
+                <p>
+                    Running CryptB is same way as above, except that CryptB.py is a CLI tool and
+                    accepts arguments and options. You can see all options for CryptB using '--help'
+                    option:
+                </p>
+                <code>
+                    <span id="c3">./CryptB.py --help</span>
+                    &nbsp;&nbsp; <img onclick="copy('c3')" class="copy" src="./assets/copy.png">
+                </code>
+
+                <div class="code">
+                    <p>
+                        Usage: CryptB.py [OPTIONS] <br>
+                        <br>
+                        Options: <br>
+                        -F, --file FILENAME &nbsp; File containing plain text for encryption. <br>
+                        -O, --out PATH &nbsp; Path/File to write the encrypted text to. <br>
+                        -M, --method [md5|md5-brute|...|baconian-e|baconian-d] &nbsp;
+                        Method to use for encryption.<br>
+                        -K, --key INTEGER &nbsp; Encryption/decryption key for ciphers that support it.
+                        Positive integer for encryption, Negative
+                        integer for decryption.<br>
+                        --about, --copyright &nbsp; Show About & Copyright <br>
+                        --help &nbsp; Show this message and exit. <br>
+                    </p>
+                </div>
+
+            </p>
+            <h2>Support</h2>
+            <p>
+                If you encounter any issues or bugs, feel free to open an issue about it on this repo and I'll try
+                to help.
+            </p>
+
+            <h2>License</h2>
+            <p>
+                This project is licensed under GPL v3.0. See <a href="../LICENSE">LICENSE</a> for details.
+            </p>
+        </div>
+        <script src="./assets/script.js"></script>
+    </body>
+
+</html>
