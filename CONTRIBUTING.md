@@ -58,3 +58,7 @@ Enable the checkbox to allow maintainer edits so the branch can be updated for a
 We may ask for changes to be made before a PR can be merged, either using suggested changes or pull request comments.  You can make any other changes in your fork, then commit them to your branch.
 As you update your PR and apply changes, mark each conversation as resolved.
 If you run into any merge issues, checkout this git tutorial to help you resolve merge conflicts and other issues.
+
+## Roadmap
+- [ ] Fully change the UI; Replacing menus with user inputted options.
+- [ ] Crypt-GUI.py
