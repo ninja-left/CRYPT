@@ -9,7 +9,7 @@
     <img src="https://img.shields.io/github/commit-activity/m/ninja-left/CRYPT">
   </a>
 
-![GitHub tag (with filter)](https://img.shields.io/github/v/tag/ninja-left/CRYPT?label=Version&color=black)
+![Latest version](https://img.shields.io/github/v/tag/ninja-left/CRYPT?label=Version&color=black) ![Code style](https://img.shields.io/badge/code%20style-black-000000.svg)
 
 </div>
 
