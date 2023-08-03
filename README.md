@@ -1,50 +1,109 @@
+# CRYPT, an encryption/decryption tool
 ![head](./modules/images/head.png)
 
 <div align=center>
-  <a href="https://github.com/N1nj4R8/CRYPT/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/N1nj4R8/CRYPT">
+  <a href="https://github.com/ninja-left/CRYPT/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/ninja-left/CRYPT">
   </a>
-  <a href="https://github.com/N1nj4R8/CRYPT">
-    <img src="https://img.shields.io/github/commit-activity/m/N1nj4R8/CRYPT">
+  <a href="https://github.com/ninja-left/CRYPT">
+    <img src="https://img.shields.io/github/commit-activity/m/ninja-left/CRYPT">
   </a>
+
+![GitHub tag (with filter)](https://img.shields.io/github/v/tag/ninja-left/CRYPT?label=Version&color=black)
+
 </div>
 
-# CRYPT
-**Encryption/Decryption Tool**
 
-CRYPT is a tool that allows you to encrypt or decrypt texts.  
+## What?
+CRYPT is a tool that allows you to encrypt or decrypt texts.
 
-## Encodings:
-* Base16
-* Base32
-* Base64
-* Base85
+## Why?
+The main reason I wrote this program was having access to common encodings and hash
+functions in one place. Later I added more functions and ciphers. All releases have
+a script named `CryptB.py` which takes 2 files as input and output and encodes or
+decodes the input file line by line while writing to output file.
 
-## Ciphers:
-* Caesar Cipher
-* Morse Code
-* Baconian Cipher
-* Vigenère Cipher
+## What encodings, ciphers, and hashes are supported?
+1. Encodings:
+   - Base16
+   - Base32
+   - Base64
+   - Base85
 
-## Hashes:
-+ MD5
-+ Md5 Crypt
-+ SHA256 & SHA512
-+ SHA256 & SHA512 Crypt
-+ NT
-+ BCrypt
-+ Argon2
-+ PBKDF2+SHA256 & PBKDF2+SHA512
-+ Hash Cracking with a wordlist or by Bruteforcing
+2. Ciphers:
+   - Caesar Cipher
+   - Morse Code
+   - Baconian Cipher
+   - Vigenère Cipher
+
+3. Hashes:
+   - MD5
+   - Md5 Crypt
+   - SHA256 & SHA512
+   - SHA256 & SHA512 Crypt
+   - NT
+   - BCrypt
+   - Argon2
+   - PBKDF2+SHA256 & PBKDF2+SHA512
+   - Hash Cracking with a wordlist or by Bruteforcing
+
+## Usage
+Run main app using
+```shell
+python Crypt-?.?.?.py
+```
+or
+```shell
+./Crypt-?.?.?.py
+```
+Where `?.?.?` is the version.
+
+---
+
+Running `CryptB.py` is same way as above, except that `CryptB.py` is a CLI tool
+and accept arguments and options.
+You can see all options for `CryptB.py` using `--help` option:
+
+```shell
+./CryptB.py --help
+```
+
+```
+Usage: CryptB.py [OPTIONS]
+
+Options:
+  -F, --file FILENAME             File containing plain text for encryption.
+  -O, --out PATH                  Path/File to write the encrypted text to.
+  -M, --method [md5|md5-brute|...|baconian-e|baconian-d]
+                                  Method to use for encryption.
+  -K, --key INTEGER               Encryption/decryption key for ciphers that support it.
+                                  Positive integer for encryption, Negative
+                                  integer for decryption.
+  --about, --copyright            Show About & Copyright
+  --help                          Show this message and exit.
+```
+
+## Support
+If you encounter any issues or bugs, feel free to open an issue about it on this repo and I'll try to help.
 
 ## License
-This project is licensed under [GPL v3.0]
+This project is licensed under [GPL v3.0] Copyright (C) 2022  Ninja Left
 
-## TODO
-- [ ] Add new UI.
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+any later version.
 
-## CryptB
-This script takes a file as input and encodes/decodes it line by line and writes the lines to the output file.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with This program. If not, see <https://www.gnu.org/licenses/>.
+
+## Roadmap
+- [ ] Remove the menus and change the UI.
 
 
 [GPL v3.0]: ./LICENSE
