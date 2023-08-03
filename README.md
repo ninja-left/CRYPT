@@ -87,23 +87,15 @@ Options:
 If you encounter any issues or bugs, feel free to open an issue about it on this repo and I'll try to help.
 
 ## License
-This project is licensed under [GPL v3.0] Copyright (C) 2022  Ninja Left
+This project is licensed under GPL v3.0. See [LICENSE] for details.
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with This program. If not, see <https://www.gnu.org/licenses/>.
+## Contributing
+Thanks in advance for considering to help me on this project.
+You can read [CONTRIBUTE.md] for details on contributing to the project.
 
 ## Roadmap
 - [ ] Remove the menus and change the UI.
 
 
-[GPL v3.0]: ./LICENSE
+[LICENSE]: ./LICENSE
+[CONTRIBUTE.md]: ./CONTRIBUTE.md
