@@ -91,11 +91,11 @@ This project is licensed under GPL v3.0. See [LICENSE] for details.
 
 ## Contributing
 Thanks in advance for considering to help me on this project.
-You can read [CONTRIBUTE.md] for details on contributing to the project.
+You can read [CONTRIBUTING.md] for details on contributing to the project.
 
 ## Roadmap
 - [ ] Remove the menus and change the UI.
 
 
 [LICENSE]: ./LICENSE
-[CONTRIBUTE.md]: ./CONTRIBUTE.md
+[CONTRIBUTING.md]: ./CONTRIBUTING.md
