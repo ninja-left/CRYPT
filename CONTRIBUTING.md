@@ -50,6 +50,7 @@ This section guides those who want to write code for this program. It would make
 Steps for contributing:
 - Fork the repository.
 - Install/Update to Python 3.11.
+- Use [Black](https://github.com/psf/black) formater.
 - Create a new branch and start contribution.
 Pull Request
 
